@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" 
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Artikel - Sortiment</title>
+    <h:outputStylesheet library="css" name="style.css?version=1.0.1" />
+</h:head>
+<h:body>
+<h1>Artikel - Sortiment</h1>
+    
+    <div class="artikeltabelle">
+    <p:dataTable var="einArtikel" value="#{artikelverwaltung.artikelList}">
+        <p:column sortBy="#{einArtikel.id}">
+            <f:facet name="header">Nummer:</f:facet>
+            <h:outputText value="#{einArtikel.id}" />
+        </p:column>
+        
+        <p:column sortBy="#{einArtikel.name}">
+            <f:facet name="header">Name:</f:facet>
+            <h:form>
+            <h:commandLink value="#{einArtikel.name}" 
+            			   action="startseite?faces-redirect=true" />
+            </h:form>
+        </p:column>
+      
+        <p:column sortBy="#{einArtikel.verfuegbarAb}">
+            <f:facet name="header">Verfügbar ab:</f:facet>
+            <p:calendar value="#{einArtikel.verfuegbarAb}" 
+                        disabled="true" 
+                        pattern="dd.MM.yyyy" />
+        </p:column>
+    </p:dataTable>
+	    <div class="button-container">
+	    <h:form>
+	    	<h:commandButton value="Züruck zur Startseite" 
+	    					 action="startseite?faces-redirect=true" 
+	    					 styleClass="artikeltabellebuttons"/>
+	    </h:form>
+	    </div>
+    </div>
+    
+    
+    
+</h:body>
+    
+</html>

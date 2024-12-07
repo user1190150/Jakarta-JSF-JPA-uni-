@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Welcome to JSF</title>
+    <h:outputStylesheet library="css" name="style.css" />
+</h:head>
+<h:body>
+	<h:panelGrid columns="1" styleClass="willkommen">
+    <h1>Willkommen bei Jakarta EE!</h1>
+
+    <!-- Nachricht anzeigen -->
+    <h:outputText value="#{helloBean.message}" />
+
+    <!-- Button zum Auslösen der Aktion -->
+    <h:form>
+        <h:commandButton value="Sagen Sie Hallo" action="#{helloBean.sayHello}" />
+        <br />
+        <h:commandButton value="Startseite" action="#{helloBean.zurStartseite}" immediate="true" />
+    </h:form>
+    </h:panelGrid>
+</h:body>
+</html>
+

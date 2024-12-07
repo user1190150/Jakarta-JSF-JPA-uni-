@@ -1,0 +1,62 @@
+.header {
+ margin: 0 auto;
+ width: 50%;
+ border: 1px solid blue;
+ padding: 20px;
+}
+
+.artikeltabelle {
+	margin: 0 auto;
+	width: 50%;
+	border: 1px solid black;
+	padding: 20px;
+	text-align: left;
+}
+
+.panelstyle {
+	margin: 0 auto;
+	width: 50%;
+	border: 1px solid black;
+	padding: 25px;
+	text-align: left;
+}
+
+.button-container{
+	display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+.artikeltabellebuttons {
+    margin: 5px;
+    padding: 10px;
+}
+
+.sliderclass{
+	margin: 30px;
+	padding: 5px;
+	border: 1px solid blue;
+}
+
+.willkommen {
+	margin: 0 auto;
+	width: 50%;
+	border: 1px solid blue;
+	padding: 25px;
+	text-align: center;
+}
+
+.first {
+	padding-top: 10px;
+	padding-bottom: 5px;
+}
+
+.second {
+	padding-top: 5px;
+	padding-bottom: 10px;
+}
+
+.flex-div {
+	display: flex;
+	flex-direction: column;
+}

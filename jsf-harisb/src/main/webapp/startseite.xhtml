@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Startseite - Artikel</title>
+    <h:outputStylesheet library="css" name="style.css?version=1.0.1" />
+</h:head>
+
+<h:body>
+	<div class="first">
+	<h2>Artikelverwaltung</h2>
+	<h:panelGrid columns="2" styleClass="header">	
+    <h:panelGroup>
+        <img id="kopf_links" src="resources/images/logo2.jpg" width="250" alt="logo2" />
+    </h:panelGroup>
+    <h:panelGroup id="kopf_rechts">
+        <h:outputText value="#{anschrift.name}" /><br />
+        <h:outputText value="#{anschrift.strasse} #{anschrift.hausnummer}" /><br />
+        <h:outputText value="#{anschrift.plz} #{anschrift.ort}" /><br />
+    </h:panelGroup>
+	</h:panelGrid>
+	</div>
+    
+
+    <!-- Panel zur Navigation und Anzeige der Artikel -->
+    <div class="second">
+    <h:panelGrid columns="1" styleClass="artikeltabelle">
+        <!-- Navigation Buttons -->
+        <h:panelGroup layout="block" styleClass="button-container">
+        <h:form>               	
+        	<h:commandButton value="Weiter" action="#{artikelController.vor}" styleClass="artikeltabellebuttons" />
+        	<h:commandButton value="Zurück" action="#{artikelController.zurueck}" styleClass="artikeltabellebuttons"/>
+        	<h:commandButton value="Artikel Sortiment" action="sortiment?faces-redirect=true" styleClass="artikeltabellebuttons"/>
+		</h:form>
+		</h:panelGroup>
+        <!-- Anzeige des aktuellen Artikels -->
+        <h:outputLabel for="name" value="Name: " />
+        <h:outputText id="name" value="#{artikelController.aktuellerArtikel.name}" />
+        
+        <h:outputLabel for="bewertung" value="Bewertung: " />
+        <h:outputText id="bewertung" 
+        			  value="#{artikelController.aktuellerArtikel.bewertung}" 
+        			  rendered="#{artikelController.aktuellerArtikel.bewertung > 0}" />
+        			  
+        <h:outputLabel for="energie" value="Energie Effizienz: " />
+        <h:outputText id="energie" 
+        			  value="#{artikelController.aktuellerArtikel.energie}" 
+        			  rendered="#{artikelController.aktuellerArtikel.energie > 0}" />
+        
+        <h:outputLabel for="beschreibung" value="Beschreibung: " />
+        <h:outputText id="beschreibung" 
+        			  value="#{artikelController.aktuellerArtikel.beschreibung}"
+        			  escape="false" />
+        
+        <h:outputLabel for="verfuegbar" value="Verfügbar ab: " />
+        <p:calendar id="verfuegbar" 
+        			value="#{artikelController.aktuellerArtikel.verfuegbarAb}"
+        			pattern="dd.MM.yyyy"
+        			readonly="true">
+        </p:calendar>
+
+        <h:outputLabel for="bild" value="Bild: " />
+        <h:graphicImage id="bild" value="/resources/images/#{artikelController.aktuellerArtikel.bild}" style="height: 150px; width: 150px;" />
+        <h:form>
+        	<h:commandButton value="Bearbeiten" action="artikelBearbeiten?faces-redirect=true" />
+        	<h:commandButton value="Bewerten" action="bewertung?faces-redirect=true" />
+        </h:form>       
+    </h:panelGrid>
+    </div>
+</h:body>
+</html>
