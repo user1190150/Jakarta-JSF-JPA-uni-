@@ -17,7 +17,8 @@
 			<h:outputLabel for="name" value="Name: " />
 			<h:inputText id="name" 
 						 value="#{artikelController.aktuellerArtikel.name}" 
-						 required="true" />
+						 required="true" >
+			</h:inputText>
 			
 			
 			<h:outputLabel for="beschreibung" value="Beschreibung: " />
@@ -31,6 +32,13 @@
 						value="#{artikelController.aktuellerArtikel.verfuegbarAb}" 
 						pattern="dd.MM.yyyy">
 			</p:calendar>
+			
+			<h:outputLabel for="preis" value="Preis: " />
+			<h:inputText id="preis" 
+						 value="#{artikelController.aktuellerArtikel.preis}"
+						 required="true">
+				<f:validateDoubleRange minimum="1" maximum="10000" />				
+			</h:inputText>
 			
 			
 			<h:outputLabel for="bild" value="Bild: " />

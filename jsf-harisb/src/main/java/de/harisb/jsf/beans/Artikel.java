@@ -15,7 +15,7 @@ public class Artikel implements Serializable {
 	private String name;
 	private String beschreibung;
 	private String bild;
-	private int preis;
+	private double preis;
 	private double bewertung;
 	private double energie;
 	private Date verfuegbarAb;
@@ -28,16 +28,17 @@ public class Artikel implements Serializable {
 		System.out.println(verfuegbarAb + " ist das aktuell verfuegbare Datum.");
 	}
 	
-	public Artikel(int id, String name, String beschreibung, String bild) {
+	public Artikel(int id, String name, String beschreibung, String bild, double preis) {
 		this();
 		this.id = id;
 		this.name = name;
 		this.beschreibung = beschreibung;
 		this.bild = bild;
+		this.preis = preis;
 	}
 	
-	public Artikel(int id, String name, String beschreibung, String bild, Date verfuegbarAb) {
-		this(id, name, beschreibung, bild);
+	public Artikel(int id, String name, String beschreibung, String bild,double preis, Date verfuegbarAb) {
+		this(id, name, beschreibung, bild, preis);
 		this.verfuegbarAb = verfuegbarAb;
 	}
 	
@@ -94,11 +95,11 @@ public class Artikel implements Serializable {
 		this.energie = energie;
 	}
 	
-	public int getPreis() {
+	public double getPreis() {
 		return preis;
 	}
 
-	public void setPreis(int preis) {
+	public void setPreis(double preis) {
 		this.preis = preis;
 	}
 	

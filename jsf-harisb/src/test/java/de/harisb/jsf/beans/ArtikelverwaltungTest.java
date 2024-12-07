@@ -16,9 +16,9 @@ class ArtikelverwaltungTest {
 		artikelverwaltung = new Artikelverwaltung();
 		
 		//Initialisieren der Liste mit Test Artikeln
-		artikelverwaltung.getArtikelList().add(new Artikel(1,"firstArtikel","abc","jpg1"));
-		artikelverwaltung.getArtikelList().add(new Artikel(2,"secondArtikel","def","jpg2"));
-		artikelverwaltung.getArtikelList().add(new Artikel(3,"thirdArtikel","ghi","jpg3"));
+		artikelverwaltung.getArtikelList().add(new Artikel(1,"firstArtikel","abc","jpg1", 49.99));
+		artikelverwaltung.getArtikelList().add(new Artikel(2,"secondArtikel","def","jpg2", 49.99));
+		artikelverwaltung.getArtikelList().add(new Artikel(3,"thirdArtikel","ghi","jpg3", 49.99));
 	}
 
 	@Test

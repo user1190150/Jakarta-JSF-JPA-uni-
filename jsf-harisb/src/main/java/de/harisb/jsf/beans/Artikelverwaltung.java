@@ -27,7 +27,7 @@ public class Artikelverwaltung implements Serializable {
 				+ " Langlebigkeit und Eleganz kombiniert. Der QuantumScope X7 ist perfekt"
 				+ " für Forscher und Ingenieure, die komplexe Materialien, Umgebungen oder"
 				+ " Strukturen auf Molekularebene untersuchen müssen.",
-				"QuantumScope.jpg"));
+				"QuantumScope.jpg", 1269.99));
 		artikelList.add( new Artikel(2, "EnviroProbe Z1",
 				"Der EnviroProbe Z1 revolutioniert die Erkundung natürlicher Umgebungen."
 				+ " Mit einem integrierten Bio- und Geo-Analysetool kann er Luftqualität,"
@@ -35,7 +35,7 @@ public class Artikelverwaltung implements Serializable {
 				+ " scannen. Das ergonomische Design mit einem rotierenden 360°-Sensor"
 				+ " garantiert maximale Flexibilität in jeder Situation. Perfekt für "
 				+ "Archäologen, Wissenschaftler oder Umweltschutzteams.",
-				"EnviroProbe Z1.jpg"));
+				"EnviroProbe Z1.jpg", 3249.99));
 		artikelList.add( new Artikel(3, "LuminaTracer G9",
 				"Der LuminaTracer G9 ist ein optischer Scanner der nächsten Generation,"
 				+ " der auf Lichtwellenanalyse basiert. Sein innovativer Prismensensor erfasst"
@@ -43,21 +43,21 @@ public class Artikelverwaltung implements Serializable {
 				+ " Der eingebaute AI-Analysemotor liefert präzise Berichte direkt auf das"
 				+ " projizierte HUD (Heads-Up-Display). Besonders geeignet für Kunstrestauratoren,"
 				+ " Sicherheitskräfte und High-Tech-Designer.",
-				"LuminaTracer G9.jpg"));
+				"LuminaTracer G9.jpg", 125.99));
 		artikelList.add( new Artikel(4, "SpectraMap V2",
 				"Mit dem SpectraMap V2 wird die Visualisierung unsichtbarer Strahlen Realität."
 				+ " Dieser Scanner kann Infrarot-, Ultraviolett- und Röntgenwellen in Echtzeit"
 				+ " analysieren und in ein verständliches Bild umwandeln. Das intuitive"
 				+ " Touchscreen-Display und die KI-gestützte Objekterkennung machen"
 				+ " ihn unverzichtbar für Mediziner, Ingenieure und Rettungskräfte.",
-				"SpectraMap V2.jpg"));
+				"SpectraMap V2.jpg", 3575.99));
 		artikelList.add( new Artikel(5, "OmniScan HyperNova",
 				"Der OmniScan HyperNova ist ein universeller Scanner, der keine Wünsche offen lässt. Er kombiniert"
 				+ " spektrale Analyse, chemische Identifikation und thermografische Kartierung in einem Gerät. Mit"
 				+ " seinem robusten Design hält er extremen Temperaturen und Bedingungen stand, wodurch er ideal"
 				+ " für Weltraummissionen, industrielle Inspektionen oder"
 				+ " Katastrophenhilfe geeignet ist. Ein wahres",
-				"OmniScan HyperNova.jpg"));
+				"OmniScan HyperNova.jpg", 1169.99));
 		System.out.println("Artikel hinzugefügt: " + artikelList.size());
 	}
 	
