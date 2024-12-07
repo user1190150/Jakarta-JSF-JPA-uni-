@@ -4,6 +4,10 @@ import java.io.Serializable;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.SessionScoped;
+import jakarta.faces.application.FacesMessage;
+import jakarta.faces.component.UIComponent;
+import jakarta.faces.context.FacesContext;
+import jakarta.faces.validator.ValidatorException;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
@@ -86,4 +90,29 @@ public class ArtikelController implements Serializable {
         }
     }
     
+    //Benutzerdefinierte Validierung der gtin fuer Artikel
+    public void validateGtin(FacesContext context, UIComponent component, Object value) throws ValidatorException
+    {
+    	String id = (String) value; //Eingabe vom Benutzer
+    	int chiper = Artikel.berechnePruefsumme(id); // Prüfsumme wird berechnet
+    	
+    	if(!id.endsWith(String.valueOf(chiper)))
+    	{
+    		throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR,
+    									 id + " ist keine gültige GTIN. "
+    									 + " Erwartete Prüfziffer: " + chiper, ""));
+    				
+    	}
+    }
+    
+    
+    
+    
 }
+
+
+
+
+
+
+

@@ -20,6 +20,12 @@
 						 required="true" >
 			</h:inputText>
 			
+			<h:outputLabel for="gtin" value="GTIN: " />
+			<h:inputText id="gtin" 
+						 value="#{artikelController.aktuellerArtikel.gtin}" 
+						 validator="#{artikelController.validateGtin}">
+			</h:inputText>
+			
 			
 			<h:outputLabel for="beschreibung" value="Beschreibung: " />
 			<p:textEditor id="beschreibung" 
@@ -63,6 +69,7 @@
 		<div class="flex-div">
 		<span><h:message for="name" /></span>
 		<span><h:message for="bild" /></span>
+		<span><h:message for="gtin" /></span>
 		</div>
 				
 	</h:form>	

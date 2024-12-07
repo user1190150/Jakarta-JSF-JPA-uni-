@@ -16,6 +16,7 @@ public class Artikel implements Serializable {
 	private String beschreibung;
 	private String bild;
 	private double preis;
+	private String gtin;
 	private double bewertung;
 	private double energie;
 	private Date verfuegbarAb;
@@ -103,4 +104,35 @@ public class Artikel implements Serializable {
 		this.preis = preis;
 	}
 	
+	public String getGtin() {
+		return gtin;
+	}
+	
+	public void setGtin(String gtin) {
+		this.gtin = gtin;
+	}
+	
+	//Modulo-10 Algorithmus
+	public static int berechnePruefsumme(String gtin) {
+	    String gtinOhnePruefziffer = gtin.substring(0, 12); // Die ersten 12 Ziffern
+	    int summe = 0;
+
+	    for (int i = 0; i < gtinOhnePruefziffer.length(); i++) {
+	        int zahl = Character.getNumericValue(gtinOhnePruefziffer.charAt(i));
+	        if (i % 2 == 0) {
+	            summe += zahl;
+	        } else {
+	            summe += zahl * 3;
+	        }
+	    }
+
+	    return (10 - (summe % 10)) % 10;
+	}
+	
+	
 }
+
+
+
+
+
