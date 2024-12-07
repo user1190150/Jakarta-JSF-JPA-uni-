@@ -15,6 +15,7 @@ public class Artikel implements Serializable {
 	private String name;
 	private String beschreibung;
 	private String bild;
+	private int preis;
 	private double bewertung;
 	private double energie;
 	private Date verfuegbarAb;
@@ -91,6 +92,14 @@ public class Artikel implements Serializable {
 
 	public void setEnergie(double energie) {
 		this.energie = energie;
+	}
+	
+	public int getPreis() {
+		return preis;
+	}
+
+	public void setPreis(int preis) {
+		this.preis = preis;
 	}
 	
 }
