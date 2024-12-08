@@ -57,6 +57,10 @@
         <h:outputText id="beschreibung" 
         			  value="#{artikelController.aktuellerArtikel.beschreibung}"
         			  escape="false" />
+        			  
+       	<h:outputLabel for="aktualisiert" value="letzte aktualisierung: " />
+       	<h:outputText id="aktualisiert" value="#{artikelController.aktuellerArtikel.aktualisiert}" />
+
         
         <h:outputLabel for="verfuegbar" value="Verfügbar ab: " />
         <p:calendar id="verfuegbar" 

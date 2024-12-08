@@ -19,6 +19,7 @@ public class Artikel implements Serializable {
 	private String gtin;
 	private double bewertung;
 	private double energie;
+	private Date aktualisiert;
 	private Date verfuegbarAb;
 	private static final long serialVersionUID = 1L;
 	
@@ -110,6 +111,14 @@ public class Artikel implements Serializable {
 	
 	public void setGtin(String gtin) {
 		this.gtin = gtin;
+	}
+	
+	public Date getAktualisiert() {
+		return aktualisiert;
+	}
+
+	public void setAktualisiert(Date aktualisiert) {
+		this.aktualisiert = aktualisiert;
 	}
 	
 	//Modulo-10 Algorithmus

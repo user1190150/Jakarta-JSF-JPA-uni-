@@ -32,6 +32,11 @@
 						  value="#{artikelController.aktuellerArtikel.beschreibung}"
 						  secure="false">
 			</p:textEditor>
+			
+			<h:outputLabel for="aktualisiert" value="Aktualisiert am: " />
+			<h:inputText id="aktualisiert" value="#{artikelController.aktuellerArtikel.aktualisiert}" >
+				<f:convertDateTime type="date" dateStyle="short" />
+			</h:inputText>
 						  
 			<h:outputLabel for="verfuegbar" value="Verfügbar ab: " />		 
 			<p:calendar id="verfuegbar" 
@@ -42,8 +47,8 @@
 			<h:outputLabel for="preis" value="Preis: " />
 			<h:inputText id="preis" 
 						 value="#{artikelController.aktuellerArtikel.preis}"
-						 required="true">
-				<f:validateDoubleRange minimum="1" maximum="10000" />				
+						 required="true">				
+				<f:convertNumber type="currency" currencySymbol="EUR" />				
 			</h:inputText>
 			
 			
@@ -51,7 +56,7 @@
             <h:inputText id="bild" value="#{artikelController.aktuellerArtikel.bild}">
                 <!-- AJAX, das Bild aktualisiert, wenn der Pfad geändert wird -->
                 <p:ajax event="keyup" update="bildPreview" />
-                <f:validateRegex pattern="[a-zA-Z0-9]+.(jpg|jpeg|gif|png)" />
+                <!-- <f:validateRegex pattern="[a-zA-Z0-9]+.(jpg|jpeg|gif|png)" /> -->
             </h:inputText>
 
             <h:outputLabel for="bildPreview" value="Bildvorschau: " />
