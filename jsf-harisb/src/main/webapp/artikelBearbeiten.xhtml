@@ -10,21 +10,29 @@
 <h:body>
 <h1>Artikel - Bearbeiten</h1>
 	<h:form>
-		<h:panelGrid columns="2" styleClass="artikeltabelle">
+		<h:panelGrid columns="3" styleClass="artikeltabelle">
 			<h:outputLabel for="id" value="Id: " />
-			<h:inputText id="id" value="#{artikelController.aktuellerArtikel.id}" />
+			<h:inputText id="id" 
+						 label="ID"
+						 value="#{artikelController.aktuellerArtikel.id}" 
+						 required="true"/>
+			<h:message for="id" styleClass="error" />
 			
 			<h:outputLabel for="name" value="Name: " />
-			<h:inputText id="name" 
+			<h:inputText id="name"
+						 label="Name" 
 						 value="#{artikelController.aktuellerArtikel.name}" 
 						 required="true" >
 			</h:inputText>
+			<h:message for="name" styleClass="error" />
 			
 			<h:outputLabel for="gtin" value="GTIN: " />
 			<h:inputText id="gtin" 
+						 label="GTIN"
 						 value="#{artikelController.aktuellerArtikel.gtin}" 
 						 validator="#{artikelController.validateGtin}">
 			</h:inputText>
+			<h:message for="gtin" styleClass="error" />
 			
 			
 			<h:outputLabel for="beschreibung" value="Beschreibung: " />
@@ -32,50 +40,52 @@
 						  value="#{artikelController.aktuellerArtikel.beschreibung}"
 						  secure="false">
 			</p:textEditor>
+			<p />
 			
 			<h:outputLabel for="aktualisiert" value="Aktualisiert am: " />
-			<h:inputText id="aktualisiert" value="#{artikelController.aktuellerArtikel.aktualisiert}" >
+			<h:inputText id="aktualisiert"
+						 label="Aktualisiert"
+						 value="#{artikelController.aktuellerArtikel.aktualisiert}" >
 				<f:convertDateTime type="date" dateStyle="short" />
 			</h:inputText>
+			<h:message for="aktualisiert" styleClass="error" />
 						  
 			<h:outputLabel for="verfuegbar" value="Verfügbar ab: " />		 
 			<p:calendar id="verfuegbar" 
 						value="#{artikelController.aktuellerArtikel.verfuegbarAb}" 
 						pattern="dd.MM.yyyy">
 			</p:calendar>
+			<p />
 			
 			<h:outputLabel for="preis" value="Preis: " />
-			<h:inputText id="preis" 
-						 value="#{artikelController.aktuellerArtikel.preis}"
-						 required="true">				
+			<h:inputText id="preis"
+						 label="Preis" 
+						 value="#{artikelController.aktuellerArtikel.preis}" >				
 				<f:convertNumber type="currency" currencySymbol="EUR" />				
 			</h:inputText>
+			<h:message for="preis" styleClass="error" />
 			
 			
 			<h:outputLabel for="bild" value="Bild: " />
-            <h:inputText id="bild" value="#{artikelController.aktuellerArtikel.bild}">
+            <h:inputText id="bild" label="Bild" value="#{artikelController.aktuellerArtikel.bild}">
                 <!-- AJAX, das Bild aktualisiert, wenn der Pfad geändert wird -->
                 <p:ajax event="keyup" update="bildPreview" />
                 <!-- <f:validateRegex pattern="[a-zA-Z0-9]+.(jpg|jpeg|gif|png)" /> -->
             </h:inputText>
+            <h:message for="bild" styleClass="error" />
 
             <h:outputLabel for="bildPreview" value="Bildvorschau: " />
             <h:graphicImage id="bildPreview" 
                             value="/resources/images/#{artikelController.aktuellerArtikel.bild}" 
                             style="height:150px; width:200px;" />
+            <p />
                             
 											
 			<h:panelGroup layout="block" styleClass="button-container">
 			<h:commandButton value="Speichern" action="#{artikelController.speichereArtikel}" />
         	<h:commandButton value="Abbrechen" action="startseite?faces-redirect=true" />
-			</h:panelGroup>			
-		</h:panelGrid>
-		
-		<div class="flex-div">
-		<span><h:message for="name" /></span>
-		<span><h:message for="bild" /></span>
-		<span><h:message for="gtin" /></span>
-		</div>
+			</h:panelGroup>						
+		</h:panelGrid>				
 				
 	</h:form>	
 	<i>Upload File is comming soon...</i>

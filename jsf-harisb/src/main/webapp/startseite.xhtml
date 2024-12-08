@@ -40,6 +40,9 @@
         <h:outputLabel for="name" value="Name: " />
         <h:outputText id="name" value="#{artikelController.aktuellerArtikel.name}" />
         
+        <h:outputLabel for="preis" value="Preis: " />
+        <h:outputText id="preis" value="#{artikelController.aktuellerArtikel.preis}" />
+        
         <h:outputLabel for="gtin" value="GTIN: " />
         <h:outputText id="gtin" value="#{artikelController.aktuellerArtikel.gtin}" />
         
@@ -59,7 +62,8 @@
         			  escape="false" />
         			  
        	<h:outputLabel for="aktualisiert" value="letzte aktualisierung: " />
-       	<h:outputText id="aktualisiert" value="#{artikelController.aktuellerArtikel.aktualisiert}" />
+       	<h:outputText id="aktualisiert"      				   
+       				  value="#{artikelController.aktuellerArtikel.aktualisiert}" />
 
         
         <h:outputLabel for="verfuegbar" value="Verfügbar ab: " />
