@@ -25,13 +25,26 @@
 
 <h:form>
     <h:panelGrid columns="1" styleClass="willkommen">
+    
+    	<!-- 3. Listener Methode in Eventquelle mit f:event Komponente registriert. Listener-Methode in der View für das PostValidate-Event registrieren. -->
         <h:outputLabel for="name" value="Benutzername: " />
-        <h:inputText id="name" value="#{benutzerController.aktuellerBenutzer.name}" />
+        <h:inputText id="name" 
+        			 value="#{benutzerController.aktuellerBenutzer.name}" >
+        	<f:event type="postValidate" 
+        			 listener="#{benutzerController.postValidateName}" />
+        </h:inputText>
+        <h:message for="name" />
 
         <h:outputLabel for="password" value="Passwort: " />
-        <h:inputSecret id="password" value="#{benutzerController.aktuellerBenutzer.password}" />
+        <h:inputSecret id="password" 
+        			   value="#{benutzerController.aktuellerBenutzer.password}"
+        			   required="true" 
+        			   validator="#{benutzerController.validatePassword}" />
+        <h:message for="password" />
+        	
 
         <h:commandButton value="Login" action="#{benutzerController.login}" />
+        
     </h:panelGrid>
 </h:form>	
 </h:body>	
