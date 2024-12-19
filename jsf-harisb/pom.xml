@@ -25,6 +25,7 @@
       <version>5.0.0</version>
       <scope>provided</scope>
     </dependency>
+    
     <dependency>
       <groupId>org.glassfish</groupId>
       <artifactId>jakarta.faces</artifactId>
@@ -54,9 +55,26 @@
       <version>11.0.0</version>
       <classifier>jakarta</classifier>
     </dependency>
-    <!-- Jakarta EE Web API (enthält alle Jakarta-APIs, einschließlich JSF) -->
-
-    <!-- PrimeFaces, kompatibel mit Jakarta EE 10 -->
+    
+    <!-- Datenbank Abhaengigkeiten-->
+	<dependency>
+	  <groupId>org.postgresql</groupId>
+	  <artifactId>postgresql</artifactId>
+	  <version>42.6.0</version>
+	</dependency>
+	
+	<dependency>
+      <groupId>org.hibernate.orm</groupId>
+      <artifactId>hibernate-core</artifactId>
+      <version>6.2.6.Final</version>
+	</dependency>
+	
+	<dependency>
+        <groupId>jakarta.persistence</groupId>
+        <artifactId>jakarta.persistence-api</artifactId>
+        <version>3.1.0</version>
+    </dependency>	
+    
     <!-- JUnit 5 -->
     <dependency>
       <groupId>org.junit.jupiter</groupId>

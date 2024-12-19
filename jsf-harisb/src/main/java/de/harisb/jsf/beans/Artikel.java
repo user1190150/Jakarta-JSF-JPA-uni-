@@ -1,6 +1,12 @@
 package de.harisb.jsf.beans;
 
 import jakarta.inject.Named;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 
 import java.io.Serializable;
 import java.util.Calendar;
@@ -10,7 +16,10 @@ import jakarta.enterprise.context.RequestScoped;
 
 @Named
 @RequestScoped
+@Entity
 public class Artikel implements Serializable {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
 	private String beschreibung;
@@ -19,7 +28,9 @@ public class Artikel implements Serializable {
 	private String gtin;
 	private double bewertung;
 	private double energie;
+	@Temporal(TemporalType.DATE)
 	private Date aktualisiert;
+	@Temporal(TemporalType.DATE)
 	private Date verfuegbarAb;
 	private static final long serialVersionUID = 1L;
 	
