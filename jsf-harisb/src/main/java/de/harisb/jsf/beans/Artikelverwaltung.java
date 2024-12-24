@@ -8,62 +8,50 @@ import java.util.List;
 
 import jakarta.enterprise.context.ApplicationScoped;
 
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.Persistence;
+import jakarta.persistence.Query;
+
 @Named
 @ApplicationScoped
 public class Artikelverwaltung implements Serializable {
 	private static final long serialVersionUID = 1L;
-	private List<Artikel> artikelList;
+	private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("marstech");
+	private List<Artikel> artikelList = new ArrayList<>();
 	
 	public Artikelverwaltung() {
-		System.out.println("Artikelverwaltung Konstruktor aufgerufen");
-		artikelList = new ArrayList<>();
-		
-		artikelList.add( new Artikel(1, "QuantumScope X7",
-				"Der QuantumScope X7 ist ein Meisterwerk moderner"
-				+ " Technologie und Design. Dieser tragbare Scanner wurde speziell"
-				+ " für die multidimensionale Analyse entwickelt und verfügt über"
-				+ " eine holografische Benutzeroberfläche, die Umgebungsdaten in Echtzeit"
-				+ " visualisiert. Sein ultraleichtes Gehäuse besteht aus Titan-Polymer, das"
-				+ " Langlebigkeit und Eleganz kombiniert. Der QuantumScope X7 ist perfekt"
-				+ " für Forscher und Ingenieure, die komplexe Materialien, Umgebungen oder"
-				+ " Strukturen auf Molekularebene untersuchen müssen.",
-				"QuantumScope.jpg", 1269.99));
-		artikelList.add( new Artikel(2, "EnviroProbe Z1",
-				"Der EnviroProbe Z1 revolutioniert die Erkundung natürlicher Umgebungen."
-				+ " Mit einem integrierten Bio- und Geo-Analysetool kann er Luftqualität,"
-				+ " Bodenzusammensetzung und organische Lebensformen in Sekundenschnelle"
-				+ " scannen. Das ergonomische Design mit einem rotierenden 360°-Sensor"
-				+ " garantiert maximale Flexibilität in jeder Situation. Perfekt für "
-				+ "Archäologen, Wissenschaftler oder Umweltschutzteams.",
-				"EnviroProbe Z1.jpg", 3249.99));
-		artikelList.add( new Artikel(3, "LuminaTracer G9",
-				"Der LuminaTracer G9 ist ein optischer Scanner der nächsten Generation,"
-				+ " der auf Lichtwellenanalyse basiert. Sein innovativer Prismensensor erfasst"
-				+ " Materialdichten, Farbnuancen und sogar verborgene energetische Signaturen."
-				+ " Der eingebaute AI-Analysemotor liefert präzise Berichte direkt auf das"
-				+ " projizierte HUD (Heads-Up-Display). Besonders geeignet für Kunstrestauratoren,"
-				+ " Sicherheitskräfte und High-Tech-Designer.",
-				"LuminaTracer G9.jpg", 125.99));
-		artikelList.add( new Artikel(4, "SpectraMap V2",
-				"Mit dem SpectraMap V2 wird die Visualisierung unsichtbarer Strahlen Realität."
-				+ " Dieser Scanner kann Infrarot-, Ultraviolett- und Röntgenwellen in Echtzeit"
-				+ " analysieren und in ein verständliches Bild umwandeln. Das intuitive"
-				+ " Touchscreen-Display und die KI-gestützte Objekterkennung machen"
-				+ " ihn unverzichtbar für Mediziner, Ingenieure und Rettungskräfte.",
-				"SpectraMap V2.jpg", 3575.99));
-		artikelList.add( new Artikel(5, "OmniScan HyperNova",
-				"Der OmniScan HyperNova ist ein universeller Scanner, der keine Wünsche offen lässt. Er kombiniert"
-				+ " spektrale Analyse, chemische Identifikation und thermografische Kartierung in einem Gerät. Mit"
-				+ " seinem robusten Design hält er extremen Temperaturen und Bedingungen stand, wodurch er ideal"
-				+ " für Weltraummissionen, industrielle Inspektionen oder"
-				+ " Katastrophenhilfe geeignet ist. Ein wahres",
-				"OmniScan HyperNova.jpg", 1169.99));
+		System.out.println("Artikelverwaltung Konstruktor aufgerufen");				
 		System.out.println("Artikel hinzugefügt: " + artikelList.size());
 	}
 	
+	public void saveArtikel(Artikel neuerArtikel) {
+		EntityManager em = emf.createEntityManager();
+		EntityTransaction t = em.getTransaction();
+		
+		try {
+	        t.begin();
+	        em.merge(neuerArtikel); // Verwende merge statt persist
+	        t.commit();
+	    } catch (Exception e) {
+	        if (t.isActive()) {
+	            t.rollback();
+	        }
+	        throw e;
+	    } finally {
+	        em.close();
+	    }
+	}
+	
 	public List<Artikel> getArtikelList() {
+		EntityManager em = emf.createEntityManager();
+		Query q = em.createQuery("SELECT a FROM Artikel a");
+		artikelList = q.getResultList();
+		em.close();
 		return artikelList;
 	}
+	
 	public void setArtikelList(List<Artikel> artikelList) {
 		this.artikelList = artikelList;
 	}

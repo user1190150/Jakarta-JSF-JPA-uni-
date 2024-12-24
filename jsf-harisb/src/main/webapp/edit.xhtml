@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://xmlns.jcp.org/jsf/html"
+	  xmlns:f="http://xmlns.jcp.org/jsf/core"
+	  xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Neuer - Artikel</title>
+	<h:outputStylesheet library="css" name="style.css" />
+</h:head>
+<h:body>
+<h1>Artikel - Erstellen</h1>
+	<h:form>
+		<h:panelGrid columns="3" styleClass="artikeltabelle">
+		
+			<h:outputLabel for="id" value="Id: " />
+			<h:inputText id="id" 
+						 label="ID"
+						 value="#{artikelController.neuerArtikel.id}" 
+						 required="true"/>
+			<h:message for="id" styleClass="error" />
+									
+			<h:outputLabel for="name" value="Name: " />
+			<h:inputText id="name"
+						 label="Name" 
+						 value="#{artikelController.neuerArtikel.name}" 
+						 required="true" >
+			</h:inputText>
+			<h:message for="name" styleClass="error" />
+						
+			<h:outputLabel for="beschreibung" value="Beschreibung: " />
+			<p:textEditor id="beschreibung" 
+						  value="#{artikelController.neuerArtikel.beschreibung}"
+						  secure="false">
+			</p:textEditor>
+			<p />
+			
+			<h:outputLabel for="aktualisiert" value="Aktualisiert am: " />
+			<h:inputText id="aktualisiert"
+						 label="Aktualisiert"
+						 value="#{artikelController.neuerArtikel.aktualisiert}" >
+				<f:convertDateTime type="date" dateStyle="short" />
+			</h:inputText>
+			<h:message for="aktualisiert" styleClass="error" />
+						  
+			<h:outputLabel for="verfuegbar" value="Verfügbar ab: " />		 
+			<p:calendar id="verfuegbar" 
+						value="#{artikelController.neuerArtikel.verfuegbarAb}" 
+						pattern="dd.MM.yyyy">
+			</p:calendar>
+			<p />
+			
+			<h:outputLabel for="preis" value="Preis: " />
+			<h:inputText id="preis"
+						 label="Preis" 
+						 value="#{artikelController.neuerArtikel.preis}" >				
+				<f:convertNumber type="currency" currencySymbol="EUR" />				
+			</h:inputText>
+			<h:message for="preis" styleClass="error" />
+			
+			
+			<h:outputLabel for="bild" value="Bild: " />
+            <h:inputText id="bild" label="Bild" value="#{artikelController.neuerArtikel.bild}">
+                <!-- AJAX, das Bild aktualisiert, wenn der Pfad geändert wird -->
+                <p:ajax event="keyup" update="bildPreview" />
+                <!-- <f:validateRegex pattern="[a-zA-Z0-9]+.(jpg|jpeg|gif|png)" /> -->
+            </h:inputText>
+            <h:message for="bild" styleClass="error" />
+
+            <h:outputLabel for="bildPreview" value="Bildvorschau: " />
+            <h:graphicImage id="bildPreview" 
+                            value="/resources/images/#{artikelController.neuerArtikel.bild}" 
+                            style="height:150px; width:200px;" />
+            <p />
+                            
+											
+			<h:panelGroup layout="block" styleClass="button-container">
+			<h:commandButton value="Speichern" action="#{artikelController.speichern}" />
+        	<h:commandButton value="Abbrechen" action="startseite?faces-redirect=true" />
+			</h:panelGroup>						
+		</h:panelGrid>				
+				
+	</h:form>	
+	<i>Upload File is comming soon...</i>
+			
+</h:body>
+</html>

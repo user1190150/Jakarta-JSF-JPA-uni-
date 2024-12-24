@@ -14,12 +14,11 @@ import java.util.Date;
 
 import jakarta.enterprise.context.RequestScoped;
 
+@Entity
 @Named
 @RequestScoped
-@Entity
 public class Artikel implements Serializable {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
 	private String beschreibung;

@@ -76,8 +76,9 @@
         <h:outputLabel for="bild" value="Bild: " />
         <h:graphicImage id="bild" value="/resources/images/#{artikelController.aktuellerArtikel.bild}" style="height: 150px; width: 150px;" />
         <h:form>
+        	<h:commandButton value="Erstelle Artikel" action="#{artikelController.addArtikel}" />
         	<h:commandButton value="Bearbeiten" action="artikelBearbeiten?faces-redirect=true" />
-        	<h:commandButton value="Bewerten" action="bewertung?faces-redirect=true" />
+        	<h:commandButton value="Bewerten" action="bewertung?faces-redirect=true" />      	
         </h:form>       
     </h:panelGrid>
     </div>
