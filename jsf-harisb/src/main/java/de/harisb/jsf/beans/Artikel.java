@@ -5,12 +5,15 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import jakarta.enterprise.context.RequestScoped;
 
@@ -18,7 +21,10 @@ import jakarta.enterprise.context.RequestScoped;
 @Named
 @RequestScoped
 public class Artikel implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
 	private String beschreibung;
@@ -27,11 +33,16 @@ public class Artikel implements Serializable {
 	private String gtin;
 	private double bewertung;
 	private double energie;
+	
 	@Temporal(TemporalType.DATE)
 	private Date aktualisiert;
+	
 	@Temporal(TemporalType.DATE)
 	private Date verfuegbarAb;
-	private static final long serialVersionUID = 1L;
+	
+	@OneToMany
+	List<Bewertung> bewertungen = new ArrayList<>();
+	
 	
 	public Artikel() {
 		verfuegbarAb = getDefaultVerfuegbarkeitsDatum();
@@ -129,6 +140,14 @@ public class Artikel implements Serializable {
 
 	public void setAktualisiert(Date aktualisiert) {
 		this.aktualisiert = aktualisiert;
+	}
+	
+	public List<Bewertung> getBewertungen() {
+		return bewertungen;
+	}
+	
+	public void setBewertungen(List<Bewertung> bewertungen) {
+		this.bewertungen = bewertungen;
 	}
 	
 	//Modulo-10 Algorithmus

@@ -11,13 +11,6 @@
 <h1>Artikel - Erstellen</h1>
 	<h:form>
 		<h:panelGrid columns="3" styleClass="artikeltabelle">
-		
-			<h:outputLabel for="id" value="Id: " />
-			<h:inputText id="id" 
-						 label="ID"
-						 value="#{artikelController.neuerArtikel.id}" 
-						 required="true"/>
-			<h:message for="id" styleClass="error" />
 									
 			<h:outputLabel for="name" value="Name: " />
 			<h:inputText id="name"
@@ -32,7 +25,7 @@
 						  value="#{artikelController.neuerArtikel.beschreibung}"
 						  secure="false">
 			</p:textEditor>
-			<p />
+			
 			
 			<h:outputLabel for="aktualisiert" value="Aktualisiert am: " />
 			<h:inputText id="aktualisiert"

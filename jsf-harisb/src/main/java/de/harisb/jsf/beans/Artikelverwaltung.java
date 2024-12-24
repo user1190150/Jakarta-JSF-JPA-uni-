@@ -30,18 +30,20 @@ public class Artikelverwaltung implements Serializable {
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction t = em.getTransaction();
 		
-		try {
-	        t.begin();
-	        em.merge(neuerArtikel); // Verwende merge statt persist
-	        t.commit();
-	    } catch (Exception e) {
-	        if (t.isActive()) {
-	            t.rollback();
-	        }
-	        throw e;
-	    } finally {
-	        em.close();
-	    }
+		t.begin();
+		em.persist(neuerArtikel);
+		t.commit();
+		em.close();
+	}
+	
+	public void bearbeiteArtikel(Artikel aktuellerArtikel) {
+		EntityManager em = emf.createEntityManager();
+		EntityTransaction t = em.getTransaction();
+		
+		t.begin();
+		em.merge(aktuellerArtikel);
+		t.commit();
+		em.close();
 	}
 	
 	public List<Artikel> getArtikelList() {
@@ -54,11 +56,6 @@ public class Artikelverwaltung implements Serializable {
 	
 	public void setArtikelList(List<Artikel> artikelList) {
 		this.artikelList = artikelList;
-	}
-	
-	//Entfernt Artikel aus der List
-	public void entferneArtikel(Artikel artikel) {
-		artikelList.remove(artikel);
 	}
 	
 	

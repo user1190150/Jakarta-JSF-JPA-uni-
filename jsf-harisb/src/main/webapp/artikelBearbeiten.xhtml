@@ -11,12 +11,6 @@
 <h1>Artikel - Bearbeiten</h1>
 	<h:form>
 		<h:panelGrid columns="3" styleClass="artikeltabelle">
-			<h:outputLabel for="id" value="Id: " />
-			<h:inputText id="id" 
-						 label="ID"
-						 value="#{artikelController.aktuellerArtikel.id}" 
-						 required="true"/>
-			<h:message for="id" styleClass="error" />
 			
 			<h:outputLabel for="name" value="Name: " />
 			<h:inputText id="name"
@@ -82,7 +76,7 @@
                             
 											
 			<h:panelGroup layout="block" styleClass="button-container">
-			<h:commandButton value="Speichern" action="#{artikelController.speichereArtikel}" />
+			<h:commandButton value="Speichern" action="#{artikelController.bearbeite}" />
         	<h:commandButton value="Abbrechen" action="startseite?faces-redirect=true" />
 			</h:panelGroup>						
 		</h:panelGrid>				

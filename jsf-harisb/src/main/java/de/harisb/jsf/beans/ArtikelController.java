@@ -62,6 +62,11 @@ public class ArtikelController implements Serializable {
 	public void setIndex(int index) {
 		this.index = index;
 	}
+	
+	public String bearbeite() {
+		artikelverwaltung.bearbeiteArtikel(aktuellerArtikel);
+	    return "startseite?faces-redirect=true";
+	}
 
 	public String speichern() {
 		artikelverwaltung.saveArtikel(neuerArtikel);
